@@ -18,14 +18,15 @@ void Coche::printCoche(const char *cadena) {
 void Coche::circula(){
     sleep( 1 + rand()%MAX_TIME ); /* Tiempo aleatorio entre 1 y MAX_TIME segundos para llegar al puente */
     printCoche("llega al puente");
-    
     /* Invocar operación específica del monitor Puente con la que el coche "solicita paso" según el sentido con el 	que desea atraversarlo. Esta operación es bloqueante si ya están atravesando coches en sentido contrario */
-    if( strcmp(_sentido, N_S) == 0 ) /* Si el sentido con el que desea atravesar el puente este coche es N->S */
+    if( strcmp(_sentido, N_S) == 0 ) {/* Si el sentido con el que desea atravesar el puente este coche es N->S */
 	/**** POR HACER ****/
-        // _puente->... ; 
-    else if( strcmp(_sentido, S_N) == 0 )
+         _puente->darPasoCochesN_S(); }
+    else if( strcmp(_sentido, S_N) == 0 ){
     	/**** POR HACER ****/
-        // _puente->... ; 
+         _puente->darPasoCochesS_N(); 
+
+    }
     
     /* Si se alcanza este punto del código el coche atravesará el puente en el sentido deseado */
     printCoche("esta cruzando el puente al que llegó");
@@ -39,8 +40,9 @@ void Coche::circula(){
      que están esperando en sentido contrario comiencen a cruzar ... */
     if( strcmp(_sentido, N_S) == 0 ) 
     	/**** POR HACER ****/
-        // _puente->... ; 
+         _puente->descontarYComprobarSiCerrarPasoN_S(); 
     else if( strcmp(_sentido, S_N) == 0 )
         /**** POR HACER ****/
-        // _puente->... ; 
+         _puente->descontarYComprobarSiCerrarPasoS_N(); 
+    printf("algo %s\n",_sentido);
 }
